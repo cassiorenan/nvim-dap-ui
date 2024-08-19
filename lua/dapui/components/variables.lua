@@ -103,6 +103,7 @@ return function(client, send_ready)
         canvas:write(" = ")
         local value_start = #canvas.lines[canvas:length()]
         local value = variable.value
+        value = string.sub(value, string.find(value, " {") or #value)
 
         for _, line in ipairs(util.format_value(value_start, value)) do
           add_var_line(line)
