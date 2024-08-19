@@ -29,7 +29,7 @@ return function(client, send_ready)
       end
       for i, scope in pairs(scopes) do
         canvas:write({ { scope.name, group = "DapUIScope" }, ":\n" })
-        render_vars.render(canvas, scope.name, scope.variablesReference, config.render.indent)
+        render_vars.render(canvas, scope.name, scope.variablesReference, config.render.indent, {show_type=false})
         if i < #scopes then
           canvas:write("\n")
         end

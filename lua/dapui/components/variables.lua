@@ -40,7 +40,7 @@ return function(client, send_ready)
   ---@param parent_path string
   ---@param parent_ref integer
   ---@param indent integer
-  local function render(canvas, parent_path, parent_ref, indent)
+  local function render(canvas, parent_path, parent_ref, indent, options)
     if not canvas.prompt and prompt_func then
       canvas:set_prompt("> ", prompt_func, { fill = prompt_fill })
     end
@@ -60,9 +60,11 @@ return function(client, send_ready)
         { variable.name, group = "DapUIVariable" },
       })
 
-      local var_type = util.render_type(variable.type)
-      if #var_type > 0 then
-        canvas:write({ " ", { var_type, group = "DapUIType" } })
+      if options == nil or options.show_type then
+        local var_type = util.render_type(variable.type)
+        if #var_type > 0 then
+          canvas:write({ " ", { var_type, group = "DapUIType" } })
+        end
       end
 
       local var_group
