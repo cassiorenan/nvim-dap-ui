@@ -112,7 +112,7 @@ return function(client, send_ready)
       end
 
       if expanded_children[var_path] and variable.variablesReference ~= 0 then
-        render(canvas, var_path, variable.variablesReference, indent + config.render.indent)
+        render(canvas, var_path, variable.variablesReference, indent + config.render.indent, options)
       end
     end
   end
